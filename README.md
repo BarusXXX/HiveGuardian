@@ -59,12 +59,41 @@ After the hosted game has loaded successfully and cached its files, it can be
 revisited offline in the same browser. External reference and contact links
 require an internet connection.
 
+## Test the release locally
+
+Opening `index.html` directly creates a `file://` address. Browsers block the game's
+JavaScript modules at that address. Use a local web server instead.
+
+With the source repository and its dependencies installed, run from the repository root:
+
+```powershell
+cd game
+npm run preview
+```
+
+Open [http://127.0.0.1:4173/](http://127.0.0.1:4173/) in your browser. This serves the
+built dist; keep the terminal running while playing.
+
+If you have only this release folder and Python installed, open a terminal in the
+folder containing `index.html` and run:
+
+```powershell
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+Then open [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+
 ## Hosting this release
 
-This folder is ready for static web hosting. Upload its complete contents to the
-**root of an HTTPS site**, preserving the file names and directory structure.
-The game's asset paths start at the site root; hosting it inside a subfolder
-requires changes to those paths and the offline cache.
+This folder is ready for static web hosting. Upload its complete contents to an
+HTTPS site, preserving the file names and directory structure. Assets load
+relative to the folder containing `index.html`, so the same build works at the
+site root or under a folder such as `/HiveGuardian/`.
+
+For GitHub Pages, upload the contents of this folder to your configured Pages
+publishing location, including the `.nojekyll` file. Open the published Pages URL,
+such as `https://barusxxx.github.io/HiveGuardian/`. The manifest and offline cache
+use that folder as their scope. Replace the complete previous release when updating.
 
 Serve `index.html` through a web server rather than opening it as a local file.
 No game backend or build tools are needed on the host. Use a browser with WebGL 2

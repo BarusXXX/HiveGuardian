@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="booting">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#263f32"><meta name="description" content="Hive Guardian — Maltese Edition. Protect a Maltese honey bee colony. Command your apiary or take flight as a bee."><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="manifest" href="/manifest.webmanifest"><title>Hive Guardian · Maltese Edition</title>
-  <link rel="preload" as="image" href="/splash/hive-guardian.png" fetchpriority="high">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#263f32"><meta name="description" content="Hive Guardian — Maltese Edition. Protect a Maltese honey bee colony. Command your apiary or take flight as a bee."><link rel="icon" type="image/svg+xml" href="./favicon.svg"><link rel="manifest" href="./manifest.webmanifest"><title>Hive Guardian · Maltese Edition</title>
+  <link rel="preload" as="image" href="./splash/hive-guardian.png" fetchpriority="high">
   <style id="splash-critical">
     html,body{margin:0}html.booting,html.booting body{overflow:hidden;background:#111b16}
     html.booting body>:not(#loading){visibility:hidden}
@@ -17,21 +17,34 @@
     #loading button:focus-visible{outline:2px solid #f7ead0;outline-offset:3px}
     #loading.art-unavailable #splash-art{display:none}
     #loading.art-unavailable .splash-title{position:static;width:auto;height:auto;margin:0 0 20px;clip-path:none;white-space:normal;font:clamp(36px,6vw,80px) Georgia,serif}
+    #loading .local-file-help{max-width:420px;margin:18px auto 0;color:#bcc8ad;font:12px/1.7 'Courier New',monospace}
+    #loading .local-file-help pre{padding:10px 14px;border:1px solid #dfc38450;background:#253129;color:#e3ddc4;white-space:pre-wrap}
+    #loading .local-file-help a{color:#dfc384;text-underline-offset:3px;overflow-wrap:anywhere}
+    #loading .local-file-help a:focus-visible{outline:2px solid #dfc384;outline-offset:3px}
     #loading.leaving{opacity:0;pointer-events:none}
     @media(prefers-reduced-motion:reduce){#loading{transition:none}}
   </style>
-  <script type="module" crossorigin src="/assets/index-B-CIPa-y.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/three-Cbzojapd.js">
-  <link rel="preload" as="style" data-game-styles crossorigin href="/assets/index-MsJY6Kss.css" onload="this.onload=null;this.rel='stylesheet'" onerror="this.dataset.failed='true'">
+  <script type="module" crossorigin src="./assets/index-C0QMYALU.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/three-Cbzojapd.js">
+  <link rel="preload" as="style" data-game-styles crossorigin href="./assets/index-MsJY6Kss.css" onload="this.onload=null;this.rel='stylesheet'" onerror="this.dataset.failed='true'">
 </head>
 <body>
   <div id="loading" role="status" aria-live="polite" aria-label="Hive Guardian is loading">
-    <img id="splash-art" src="/splash/hive-guardian.png" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+    <img id="splash-art" src="./splash/hive-guardian.png" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
     <div class="splash-caption"><h1 class="splash-title">Hive Guardian</h1><span class="splash-edition">Maltese Edition</span><span class="build-version">Alpha build · v1.0.0-alpha.1</span><p class="splash-status" id="splash-status">Loading the Maltese garden…</p><button id="retry-garden" type="button" hidden>Retry</button><noscript><p>Enable JavaScript to play Hive Guardian.</p></noscript></div>
   </div>
   <script>
     (()=>{
       const splash=document.getElementById('loading'),image=document.getElementById('splash-art');
+      if(location.protocol==='file:'){
+        splash.classList.add('art-unavailable');
+        splash.setAttribute('aria-label','Hive Guardian needs a web server');
+        document.getElementById('splash-status').textContent='Open Hive Guardian through HTTP or HTTPS.';
+        const help=document.createElement('div');help.className='local-file-help';
+        help.innerHTML='<p>To preview the built game from the source project, open a terminal in the <strong>game</strong> folder and run:</p><pre>npm run preview</pre><p>Then open <a href="http://127.0.0.1:4173/">http://127.0.0.1:4173/</a>.</p><p>For hosting the release folder, see <a href="./Readme.md">Readme.md</a>.</p>';
+        splash.querySelector('.splash-caption').append(help);
+        return;
+      }
       window.hiveSplashImageReady=image.decode().catch(()=>splash.classList.add('art-unavailable')).then(()=>new Promise(resolve=>requestAnimationFrame(()=>{splash.dataset.shownAt=String(performance.now());resolve();})));
       window.addEventListener('error',event=>{if(event.target?.tagName==='SCRIPT'){document.getElementById('splash-status').textContent='The game could not load. Please retry.';const retry=document.getElementById('retry-garden');retry.hidden=false;retry.onclick=()=>location.reload();}},true);
     })();
