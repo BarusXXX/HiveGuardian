@@ -37,6 +37,9 @@ Use **Take Flight** to control an individual bee in the same colony.
 In flight, look up or down while moving forward to climb or dive.
 On touch screens, use the flight stick, drag to look, and the altitude and action
 buttons. Drag to pan and pinch to zoom in strategy view.
+Phones keep compact icon controls in portrait and landscape. Health and cargo
+sit in the upper corner, and the tactical map stays hidden. In strategy view,
+tap the + on the colony panel to show its details and guard allocation.
 
 ## Language and age guidance
 
