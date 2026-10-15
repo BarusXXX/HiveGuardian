@@ -1,6 +1,6 @@
 # Hive Guardian — Maltese Edition
 
-**Alpha build · v1.0.0-alpha.23**
+**Alpha build · v1.0.0-alpha.24**
 
 Produced by **BarusXXX and about 15 AI Agents**.
 [kaneborg.com](https://kaneborg.com/)
@@ -46,6 +46,12 @@ hive entrance to deliver foraged cargo automatically. Completion rings, particle
 and short sound cues confirm pickup and delivery. Biting nearby hostile hornets
 is automatic, with its own impact effect and sound. The red **Sting · 1 use**
 button stays labelled on phones and sacrifices the worker when it strikes.
+
+On mobile, use the **bar-chart icon** in the top bar to show or hide colony
+resources, population roles and guard settings. These stats start closed.
+Tap the chart again or touch the garden/model view to close them; you can still
+pan or fly with the same gesture. The controls remain compact after rotation.
+The field guide is available in Options.
 
 The bee panel shows a heart with health percentage and cargo icons with carried
 amounts/capacities, such as 1.2/3 pollen. Partial loads carry over between flowers
