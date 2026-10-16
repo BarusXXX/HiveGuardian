@@ -1,6 +1,6 @@
 # Hive Guardian — Maltese Edition
 
-**Alpha build · v1.0.0-alpha.24**
+**Alpha build · v1.0.0-alpha.27**
 
 Produced by **BarusXXX and about 15 AI Agents**.
 [kaneborg.com](https://kaneborg.com/)
